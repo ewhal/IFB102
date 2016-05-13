@@ -13,4 +13,5 @@ foreach ($_FILES["files"]["error"] as $key => $error) {
 		echo "<a href=\"$upload\">$upload</a><br>";
 	}
 }
+exec("mpc update");
 ?>
