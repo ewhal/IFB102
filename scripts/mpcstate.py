@@ -1,3 +1,5 @@
+#!/usr/bin/python
+#@reboot /path/to/mpcstate.py
 import RPi.GPIO as GPIO
 from time import sleep 
 from os import system
@@ -52,4 +54,3 @@ while True:
     	start = True
 	system("mpc play")
     	sleep(0.2)
-
