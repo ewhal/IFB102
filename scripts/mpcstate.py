@@ -28,10 +28,12 @@ while True:
     if prev_state == False:
         print "button 16"
         system("mpc prev")
+	system("python /root/lcd.py")
         sleep(0.2)
     if next_state == False:
         print "button 12"
         system("mpc next")
+	system("python /root/lcd.py")
         sleep(0.2)
     if volume_down_state == False:
         print "button 24"
@@ -53,4 +55,6 @@ while True:
     	print "button 18"
     	start = True
 	system("mpc play")
+	system("python /root/lcd.py")
     	sleep(0.2)
+
