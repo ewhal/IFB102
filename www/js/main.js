@@ -24,12 +24,13 @@ $(document).ready(function(){
 		var clickBtnValue = $(this).val();
 		var ajaxurl = 'mpdcontrol.php',
 		data =  {'action': clickBtnValue};
-		$.get("http://192.168.2.208/cgi-bin/mpcinfo.py", function(data){
-			document.getElementById("p1").innerHTML = data;
-		});
 
 		$.post(ajaxurl, data, function (response) {
 			alert("action performed successfully");
+			$.get("http://192.168.2.208/cgi-bin/mpcinfo.py", function(data){
+				document.getElementById("p1").innerHTML = data;
+			});
+
 		});
 	});
 	$.get("http://192.168.2.208/cgi-bin/mpcinfo.py", function(data){
