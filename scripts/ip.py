@@ -1,36 +1,7 @@
-#!/usr/bin/python
-#
-# HD44780 LCD Test Script for
-# Raspberry Pi
-#
-# Author : Matt Hawkins
-# Site   : http://www.raspberrypi-spy.co.uk
-# 
-# Date   : 03/08/2012
-#
-
-# The wiring for the LCD is as follows:
-# 1 : GND
-# 2 : 5V
-# 3 : Contrast (0-5V)*
-# 4 : RS (Register Select)
-# 5 : R/W (Read Write)       - GROUND THIS PIN
-# 6 : Enable or Strobe
-# 7 : Data Bit 0             - NOT USED
-# 8 : Data Bit 1             - NOT USED
-# 9 : Data Bit 2             - NOT USED
-# 10: Data Bit 3             - NOT USED
-# 11: Data Bit 4
-# 12: Data Bit 5
-# 13: Data Bit 6
-# 14: Data Bit 7
-# 15: LCD Backlight +5V**
-# 16: LCD Backlight GND
-
 #import
 import RPi.GPIO as GPIO
 import time
-import mpd
+import subprocess
 
 
 
@@ -60,26 +31,12 @@ def main():
 
     # Initialise display
     lcd_init()
-    ## Connect to mpd client ###
-    client = mpd.MPDClient()
-    client.connect("localhost", 6600)
+    ip = subprocess.check_output('hostname -I', shell=True).decode('utf-8')
 
-    ## Get current song info ###
-    curSongInfo = client.currentsong()
-    songTitle = curSongInfo['file']
-
+    
     # Send some right justified text
     lcd_byte(LCD_LINE_1, LCD_CMD)
-    lcd_string("Now Playing: ", 1)
-    str_pad = " " * 16  
-    songTitle = str_pad + songTitle 
-    for i in range (0, len(songTitle)):  
-        lcd_byte(LCD_LINE_2, LCD_CMD)  
-        lcd_text = songTitle[i:(i+15)]  
-        lcd_string(lcd_text,1)  
-        time.sleep(0.4)  
-    lcd_byte(LCD_LINE_2, LCD_CMD)  
-    lcd_string(str_pad,1)  
+    lcd_string(ip, 1)
 
 
 
@@ -168,3 +125,4 @@ def lcd_byte(bits, mode):
 
 if __name__ == '__main__':
     main()
+
