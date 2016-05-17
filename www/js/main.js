@@ -20,23 +20,23 @@ $(document).ready( function() {
 	});
 });
 $(document).ready(function(){
-	$('.btn').click(function(){
-		var clickBtnValue = $(this).val();
-		var ajaxurl = 'mpdcontrol.php',
-		data =  {'action': clickBtnValue};
+        var ip = "http://" + location.host + "/cgi-bin/mpcinfo.py";
+        $('.btn').click(function(){
+                var clickBtnValue = $(this).val();
+                var ajaxurl = 'mpdcontrol.php',
+                data =  {'action': clickBtnValue};
 
-		$.post(ajaxurl, data, function (response) {
-			alert("action performed successfully");
-			$.get("http://192.168.2.208/cgi-bin/mpcinfo.py", function(data){
-				document.getElementById("p1").innerHTML = data;
-			});
+                $.post(ajaxurl, data, function (response) {
+                        alert("action performed successfully");
+                        $.get(ip, function(data){
+                                document.getElementById("p1").innerHTML = data;
+                        });
 
-		});
-	});
-	$.get("http://192.168.2.208/cgi-bin/mpcinfo.py", function(data){
-		document.getElementById("p1").innerHTML = data;
-	});
+                });
+        });
+        $.get(ip, function(data){
+                document.getElementById("p1").innerHTML = data;
+        });
 
 
 });
-
