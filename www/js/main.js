@@ -34,9 +34,9 @@ $(document).ready(function(){
 
                 });
         });
-        $.get(ip, function(data){
+        setInterval($.get(ip, function(data){
                 document.getElementById("p1").innerHTML = data;
-        });
+        }), 1000 * 60 * 1);
 
 
 });
