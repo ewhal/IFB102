@@ -1,3 +1,10 @@
+function update(){
+	var ip = "http://" + location.host + "/cgi-bin/mpcinfo.py";
+	$.get(ip, function(data){
+		document.getElementById("p1").innerHTML = data;
+	});
+
+}
 $(document).on('change', '.btn-file :file', function() {
 	var input = $(this),
 	numFiles = input.get(0).files ? input.get(0).files.length : 1,
@@ -20,7 +27,6 @@ $(document).ready( function() {
 	});
 });
 $(document).ready(function(){
-        var ip = "http://" + location.host + "/cgi-bin/mpcinfo.py";
         $('.btn').click(function(){
                 var clickBtnValue = $(this).val();
                 var ajaxurl = 'mpdcontrol.php',
@@ -28,15 +34,13 @@ $(document).ready(function(){
 
                 $.post(ajaxurl, data, function (response) {
                         alert("action performed successfully");
-                        $.get(ip, function(data){
-                                document.getElementById("p1").innerHTML = data;
-                        });
+				update();
 
                 });
         });
-        setInterval($.get(ip, function(data){
-                document.getElementById("p1").innerHTML = data;
-        }), 1000 * 60 * 1);
+		update();
 
 
 });
+setInterval($.get(update()), 1000 * 60 * 1);
+
