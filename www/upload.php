@@ -8,7 +8,7 @@ foreach ($_FILES["files"]["error"] as $key => $error) {
 		$upload = "$uploads_dir$name";
 		move_uploaded_file($tmp_name, "$upload");
 		chmod($upload, 0777);
-		exec("mpc add $name");
+		exec("mpc add". escapeshellarg($name));
 	}
 }
 exec("mpc update");
