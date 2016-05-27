@@ -27,18 +27,18 @@ $(document).ready( function() {
 	});
 });
 $(document).ready(function(){
-        $('.btn').click(function(){
-                var clickBtnValue = $(this).val();
-                var ajaxurl = 'mpdcontrol.php',
-                data =  {'action': clickBtnValue};
+	$('.btn').click(function(){
+		var clickBtnValue = $(this).val();
+		var ajaxurl = 'mpdcontrol.php',
+		data =  {'action': clickBtnValue};
 
-                $.post(ajaxurl, data, function (response) {
-                        alert("action performed successfully");
-				update();
+		$.post(ajaxurl, data, function (response) {
+			alert("action performed successfully");
+			update();
 
-                });
-        });
-		update();
+		});
+	});
+	update();
 
 
 });

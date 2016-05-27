@@ -28,31 +28,31 @@ while True:
     ip = GPIO.input(23)
 
     if prev_state == False:
-	print "16"
+        print "16"
         system("mpc prev")
-    	sleep(0.2)
+        sleep(0.2)
     if next_state == False:
-	print "12"
+        print "12"
         system("mpc next")
-    	sleep(0.2)
+        sleep(0.2)
     if volume_down_state == False:
-	print "24"
+        print "24"
         system("mpc volume -10")
     if volume_up_state == False:
-	print "4"
+        print "4"
         system("mpc volume +10")
     if ip == False:
-	print "23"
-	system("python /root/ip.py")
-    	sleep(0.2)
+        print "23"
+        system("python /root/ip.py")
+        sleep(0.2)
 
 
 
     if stop_state == False:
-	print "21"
-    	system("mpc stop")
+        print "21"
+        system("mpc stop")
 
     if start_state == False:
-	print "18"
-	system("mpc play")
+        print "18"
+        system("mpc play")
 

@@ -9,4 +9,3 @@ client.connect("localhost", 6600)
 curSongInfo = client.currentsong()
 print "Content-type: text/html\n\n"
 print curSongInfo['file']
-
